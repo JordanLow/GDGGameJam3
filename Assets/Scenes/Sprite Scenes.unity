@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -713,6 +717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -733,19 +741,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_Size.x
-      value: 0.43
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_Size.y
-      value: 0.37
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2206516682631446483, guid: 1318bff30ff14794ea39e7c3114ccf41, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b2536b8e4dca1c48bd322ec1ee7f36c, type: 3}
+    - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4467758671072609328, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4467758671072609328, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -784,8 +800,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7041000268646318966, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041000268646318966, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.025
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_Name
