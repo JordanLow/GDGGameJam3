@@ -8,7 +8,11 @@ public class ResourceManager : MonoBehaviour
 
     private static int numFruits = 2;
 
-    private static int[] fruitCount = new int[numFruits];
+    private static int[] fruitCounts = new int[numFruits];
+
+    private static int[][] tileCosts = new int[9800][];
+
+    public static int level = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,13 +40,27 @@ public class ResourceManager : MonoBehaviour
             Debug.Log("Clicked 2D object: " + hit.collider.name);
             
             Tile tile = hit.collider.GetComponent<Tile>();
-
-            if (tile.isFree()) {
-                tile.openClickMenu();
-            } else if (tile.isAdd()) {
-                tile.tryAdd(fruitCount); // Silently fails for now
-            }     
+            
+            tile.openClickMenu();
         }
+    }
+
+    private static bool compareArrays(int[] arr1, int[] arr2) {
+        if (arr1.Length != arr2.Length) {
+            Debug.Log("Uncomparable Arrays");
+            return false;
+        } else {
+            for (int i = 0; i < arr1.Length; i++) {
+                if (arr1[i] < arr2[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    public static bool hasEnoughFruitsToBuildTile(int tileCount) {
+        return compareArrays(fruitCounts, tileCosts[tileCount]);
     }
 
     // Update is called once per frame

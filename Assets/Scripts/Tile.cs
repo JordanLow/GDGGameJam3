@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Tile : MonoBehaviour
 {
@@ -23,23 +24,14 @@ public class Tile : MonoBehaviour
         Mango
     }
 
-    private const int fruitCount = 10;
+    private const int fruitTypeCount = 10;
 
-    [SerializeField] public static GameObject addStateTexture;
-    [SerializeField] public static GameObject existStateTexture;
+    [SerializeField] public GameObject addStateTexture;
+    [SerializeField] public GameObject existStateTexture;
 
-    [SerializeField] public static GameObject strawberryFarmPrefab;
-    [SerializeField] public static GameObject pineappleFarmPrefab;
-    [SerializeField] public static GameObject lemonFarmPrefab;
-    [SerializeField] public static GameObject watermelonFarmPrefab;
-    [SerializeField] public static GameObject appleFarmPrefab;
-    [SerializeField] public static GameObject pearFarmPrefab;
-    [SerializeField] public static GameObject grapeFarmPrefab;
-    [SerializeField] public static GameObject kiwiFarmPrefab;
-    [SerializeField] public static GameObject bananaFarmPrefab;
-    [SerializeField] public static GameObject mangoFarmPrefab;
+    [SerializeField] public List<GameObject> farmPrefabs;
 
-    private int[,] farmSizes = new int[Tile.fruitCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
+    private int[,] farmSizes = new int[Tile.fruitTypeCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
 
     private IslandManager islandManager;
 
@@ -111,11 +103,11 @@ public class Tile : MonoBehaviour
         return this.state == TileState.Free;
     }
 
-    public bool isAdd() {
-        return this.state == TileState.Add;
-    }
-
-    public bool tryAdd(int[] fruitCount) {
+    public bool buildTile() {
+        if (ResourceManager.hasEnoughFruitsToBuildTile(IslandManager.existingTileCount)) {
+            this.setFree();
+        }
+        Debug.Log("Not enough resources");
         return false;
     }
 
@@ -123,11 +115,11 @@ public class Tile : MonoBehaviour
 
     }
 
-    public bool buildStrawberryFarm() {
-        int sizeX = farmSizes[(int) Fruit.Strawberry, 0];
-        int sizeY = farmSizes[(int) Fruit.Strawberry, 1];
+    public bool buildFarm(int index) {
+        int sizeX = farmSizes[index, 0];
+        int sizeY = farmSizes[index, 1];
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
-            currentFarm = spawnFarmPrefab(strawberryFarmPrefab, new Vector3(xPos, yPos, 0));
+            currentFarm = spawnFarmPrefab(farmPrefabs[index], new Vector3(xPos, yPos, 0));
             currentFarm.setIslandManager(islandManager);
             currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
             return true;
