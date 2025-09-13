@@ -7,10 +7,10 @@ public class ResourceManager : MonoBehaviour
     public const int fruitTypeCount = 5;
 
     public enum Fruit {
-        Strawberry = 0,
+        Grape = 0,
         Pineapple,
-        Grape,
         Watermelon,
+        Strawberry,
         Mango
     }
 
