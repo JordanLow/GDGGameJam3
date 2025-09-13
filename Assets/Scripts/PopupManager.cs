@@ -14,7 +14,7 @@ public class PopupManager : MonoBehaviour
         Instance = this;
     }
 
-    public void ShowMenuForObject(ClickableObject obj, GameObject menuPrefab)
+    public void ShowMenuForObject(GameObject obj, GameObject menuPrefab)
     {
 
         if (activeMenu != null) Destroy(activeMenu);
