@@ -4,7 +4,7 @@ public class AddButton : MonoBehaviour
 {
    
     public void OnAdd() {
-        // PopupManager.Instance.Add()
+        PopupManager.Instance.Add();
     }
 
 }

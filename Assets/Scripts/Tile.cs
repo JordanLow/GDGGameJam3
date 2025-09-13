@@ -146,7 +146,7 @@ public class Tile : MonoBehaviour
     }
 
     public void openClickMenu() {
-        PopupManager.Instance.ShowMenuForObject(gameObject, menuPrefab);
+        PopupManager.Instance.ShowMenuForObject(this, menuPrefab);
         if (this.state == TileState.Used) {
             if (isTownHall) {
                 PopupManager.Instance.EnableLevelUp();
