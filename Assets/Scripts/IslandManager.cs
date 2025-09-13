@@ -11,9 +11,11 @@ public class IslandManager : MonoBehaviour
 
     private static Tile[,] tiles = new Tile[maxSizeX, maxSizeY];
 
-    [SerializeField] public static GameObject tilePrefab;
+    public static int existingTileCount = 1;
 
-    private static Tile spawnTilePrefab(Vector3 position)
+    [SerializeField] public GameObject tilePrefab;
+
+    private Tile spawnTilePrefab(Vector3 position)
     {
         Tile instance = Instantiate(tilePrefab, position, Quaternion.identity).GetComponent<Tile>();
         return instance;

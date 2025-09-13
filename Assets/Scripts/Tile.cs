@@ -24,28 +24,16 @@ public class Tile : MonoBehaviour
         Mango
     }
 
-    private const int fruitCount = 10;
+    private const int fruitTypeCount = 10;
 
     [SerializeField] public GameObject addStateTexture;
     [SerializeField] public GameObject existStateTexture;
-/*
-    0: [SerializeField] public GameObject strawberryFarmPrefab;
-    1: [SerializeField] public GameObject pineappleFarmPrefab;
-    2: [SerializeField] public GameObject lemonFarmPrefab;
-    3: [SerializeField] public GameObject watermelonFarmPrefab;
-    4: [SerializeField] public GameObject appleFarmPrefab;
-    5: [SerializeField] public GameObject pearFarmPrefab;
-    6: [SerializeField] public GameObject grapeFarmPrefab;
-    7: [SerializeField] public GameObject kiwiFarmPrefab;
-    8: [SerializeField] public GameObject bananaFarmPrefab;
-    9: [SerializeField] public GameObject mangoFarmPrefab;
-*/
 
     [SerializeField] public List<GameObject> farmPrefabs;
 
     [SerializeField] public GameObject menuPrefab;
 
-    private int[,] farmSizes = new int[Tile.fruitCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
+    private int[,] farmSizes = new int[Tile.fruitTypeCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
 
     private IslandManager islandManager;
 
@@ -122,11 +110,11 @@ public class Tile : MonoBehaviour
         return this.state == TileState.Free;
     }
 
-    public bool isAdd() {
-        return this.state == TileState.Add;
-    }
-
-    public bool tryAdd(int[] fruitCount) {
+    public bool buildTile() {
+        if (ResourceManager.hasEnoughFruitsToBuildTile(IslandManager.existingTileCount)) {
+            this.setFree();
+        }
+        Debug.Log("Not enough resources");
         return false;
     }
 
