@@ -128,7 +128,7 @@ public class Tile : MonoBehaviour
             if (ResourceManager.hasEnoughFruitsToLevelUp()) {
                 ResourceManager.levelUp();
             } else {
-                Debug.Log("Not enough resources")
+                Debug.Log("Not enough resources");
             }
 
         } else {
