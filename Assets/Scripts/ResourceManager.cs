@@ -69,23 +69,36 @@ public class ResourceManager : MonoBehaviour
     }
 
     private static int[] getTileCosts() {
-        count = IslandManager.existingTileCount;
-        int num1 = 
-        return new int[fruitTypeCount] {
-            50 + Math.Pow(0.5 * count, 1.8),
-            30 + Math.Pow(0.5 * count, 1.8),
-            20 + Math.Pow(0.5 * count, 1.8),
-            50 + Math.Pow(0.5 * count, 1.8),
-            1 + Math.Pow(0.5 * count, 1.8)
-        };
+        int count = IslandManager.existingTileCount;
+        int num1 = (int) Math.Pow(0.5 * count, 1.8) + 50;
+        if (num1 < 0) {
+            num1 = 0;
+        }
+        int num2 = (int) Math.Pow(0.5 * count, 1.6) - 20;
+        if (num2 < 0) {
+            num2 = 0;
+        }
+        int num3 = (int) Math.Pow(0.5 * count, 1.4) - 70;
+        if (num3 < 0) {
+            num3 = 0;
+        }
+        int num4 = (int) Math.Pow(0.5 * count, 1.2) - 100;
+        if (num4 < 0) {
+            num4 = 0;
+        }
+        int num5 = (int) Math.Pow(0.5 * count, 1) - 100;
+        if (num5 < 0) {
+            num5 = 0;
+        }
+        return new int[fruitTypeCount] {num1, num2, num3, num4, num5};
     } 
 
     public static bool hasEnoughFruitsToBuildTile() {
-        return compareArrays(fruitCounts, tileCosts);
+        return compareArrays(fruitCounts, getTileCosts());
     }
 
     public static void buildTile() {
-        subtractArrays(fruitCounts, tileCosts);
+        subtractArrays(fruitCounts, getTileCosts());
         IslandManager.existingTileCount++;
     }
 
