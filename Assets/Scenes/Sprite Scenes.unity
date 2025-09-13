@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &127165654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+  m_PrefabInstance: {fileID: 6761341674313850938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &476779792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,6 +653,7 @@ RectTransform:
   - {fileID: 700430115}
   - {fileID: 1819078327}
   - {fileID: 1119686715}
+  - {fileID: 127165654}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -866,6 +872,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4467758671072609328, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
   m_PrefabInstance: {fileID: 476779792}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6761341674313850938
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1149435889}
+    m_Modifications:
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733301909964040905, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033282538216657830, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
+      propertyPath: m_Name
+      value: Strawberry Tile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f5610501e3d6634c927aff4091fc52e, type: 3}
 --- !u!1001 &8767794324090565776
 PrefabInstance:
   m_ObjectHideFlags: 0
