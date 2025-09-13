@@ -1,0 +1,54 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+
+public class MouseManager : MonoBehaviour
+{
+
+    private static InputSystem_Actions inputs;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        inputs = new InputSystem_Actions();
+
+        inputs.Enable();
+        
+        inputs.Player.Click.performed += _ => HandleClick();
+    }
+
+    private static void HandleClick()
+    {
+
+        // Get the screen position of the mouse
+        Vector2 screenPos = Mouse.current.position.ReadValue();
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            // Pointer is over a UI element (like your popup button)
+            // Don't cast physics ray / don't interact with world object
+            return;
+        }
+
+        Debug.Log("Postition: " + (screenPos.x).ToString() + ", " + (screenPos.y).ToString());
+
+        Vector2 worldPos  = Camera.main.ScreenToWorldPoint(screenPos);
+
+        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
+        
+        if (hit.collider != null)
+        {
+            Debug.Log("Clicked 2D object: " + hit.collider.name);
+            
+            Tile tile = hit.collider.GetComponent<Tile>();
+            
+            tile.openClickMenu();
+        }
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
