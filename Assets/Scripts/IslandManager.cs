@@ -18,6 +18,7 @@ public class IslandManager : MonoBehaviour
     private Tile spawnTilePrefab(Vector3 position)
     {
         Tile instance = Instantiate(tilePrefab, position, Quaternion.identity).GetComponent<Tile>();
+        Debug.Log("spawning at " + instance.transform.position);
         return instance;
     }
 
@@ -25,7 +26,7 @@ public class IslandManager : MonoBehaviour
         
         for (int i = 0; i < maxSizeX; i++) {
             for (int j = 0; j < maxSizeY; j++) {
-                tiles[i, j] = spawnTilePrefab(i*(new Vector3(0.21f, 0.14f, 0) + j*(new Vector3(-0.21f, 0.14f, 0))));
+                tiles[i, j] = spawnTilePrefab((i*(new Vector3(0.21f, 0.14f, 0)) + (j*(new Vector3(-0.21f, 0.14f, 0)))));
                 tiles[i, j].setEmpty();
                 tiles[i, j].setIslandManager(this);
                 tiles[i, j].setIndexPosition(i, j);
@@ -39,6 +40,7 @@ public class IslandManager : MonoBehaviour
         }
 
         tiles[xOrigin, yOrigin].declareTownHall();
+        tiles[xOrigin, yOrigin].name = "Town Hall";
 
 
         tiles[xOrigin + 3, yOrigin - 2].setAdd();

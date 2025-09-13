@@ -189,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4467758671072609328}
+  - component: {fileID: -1692536184984501723}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -213,3 +214,19 @@ Transform:
   - {fileID: 7406914162215891918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1692536184984501723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824016742207815007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb27ef637605514089d8d0eced2ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  addStateTexture: {fileID: 4643612380132441615}
+  existStateTexture: {fileID: 5255996329352735913}
+  farmPrefabs: []
+  menuPrefab: {fileID: 0}
