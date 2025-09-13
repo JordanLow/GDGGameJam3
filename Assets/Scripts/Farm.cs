@@ -40,6 +40,7 @@ public class Farm : MonoBehaviour
         this.isHarvestable = true;
         harvestedStateTexture.SetActive(false);
         harvestableStateTexture.SetActive(true);
+        Debug.Log("Can Harvest");
     }
 
     private void setHarvested() {
@@ -53,6 +54,7 @@ public class Farm : MonoBehaviour
             ResourceManager.addResource(fruit, harvestAmounts[(int) fruit, ResourceManager.level - 1]);
             this.setHarvested();
             startHarvestCycle();
+            Debug.Log("Harvested");
         } else {
             Debug.Log("Not ready to harvest");
         }
