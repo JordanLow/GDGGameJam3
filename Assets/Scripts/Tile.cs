@@ -29,6 +29,8 @@ public class Tile : MonoBehaviour
     [SerializeField] public GameObject kiwiFarmPrefab;
     [SerializeField] public GameObject mangoFarmPrefab;
 
+    [SerializeField] public GameObject menuPrefab;
+
 
 
     private TileState state = TileState.Empty;
@@ -65,7 +67,13 @@ public class Tile : MonoBehaviour
     }
 
     public void openClickMenu() {
-
+        if (this.state == TileState.USED) {
+            // Demolish
+            // If Harvestable, Harvest
+        }
+        // Else if FREE: Build options
+        // ELse if ADD: Add tile option
+        PopupManager.Instance.ShowMenuForObject(gameObject, menuPrefab);
     }
 
     public bool buildStrawberryFarm() {

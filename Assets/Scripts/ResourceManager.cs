@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -28,8 +29,16 @@ public class ResourceManager : MonoBehaviour
 
     private static void HandleClick()
     {
+
         // Get the screen position of the mouse
         Vector2 screenPos = Mouse.current.position.ReadValue();
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            // Pointer is over a UI element (like your popup button)
+            // Don't cast physics ray / don't interact with world object
+            return;
+        }
 
         Debug.Log("Postition: " + (screenPos.x).ToString() + ", " + (screenPos.y).ToString());
 
