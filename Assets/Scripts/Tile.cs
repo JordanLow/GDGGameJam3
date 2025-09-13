@@ -13,6 +13,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] public GameObject addStateTexture;
     [SerializeField] public GameObject existStateTexture;
+    [SerializeField] public GameObject townHallStateTexture;
 
     [SerializeField] public List<GameObject> farmPrefabs;
 
@@ -66,6 +67,9 @@ public class Tile : MonoBehaviour
     public void declareTownHall() {
         this.isTownHall = true;
         this.setUsed();
+        addStateTexture.SetActive(false);
+        existStateTexture.SetActive(false);
+        townHallStateTexture.SetActive(true);
     }
 
     public bool getIsTownHall() {
@@ -81,12 +85,14 @@ public class Tile : MonoBehaviour
         this.state = TileState.Empty;
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(false);
+        townHallStateTexture.SetActive(false);
     }
 
     public void setAdd() {
         this.state = TileState.Add;
         addStateTexture.SetActive(true);
         existStateTexture.SetActive(false);
+        townHallStateTexture.SetActive(false);
 
     }
 
@@ -94,12 +100,14 @@ public class Tile : MonoBehaviour
         this.state = TileState.Free;
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(true);
+        townHallStateTexture.SetActive(false);
     }
 
     public void setUsed() {
         this.state = TileState.Used;
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(false);
+        townHallStateTexture.SetActive(false);
     }
 
     public bool isFree() {
@@ -116,10 +124,16 @@ public class Tile : MonoBehaviour
     }
 
     public void levelUp() {
-        if (ResourceManager.hasEnoughFruitsToLevelUp()) {
-            ResourceManager.levelUp();
+        if (ResourceManager.level < 5) {
+            if (ResourceManager.hasEnoughFruitsToLevelUp()) {
+                ResourceManager.levelUp();
+            } else {
+                Debug.Log("Not enough resources")
+            }
+
+        } else {
+            Debug.Log("Cannot level up anymore");
         }
-        Debug.Log("Not enough resources");
     }
 
     public void harvestFarmOnTile() {
@@ -148,13 +162,21 @@ public class Tile : MonoBehaviour
     public bool buildFarm(int idx) {
         int sizeX = farmSizes[idx, 0];
         int sizeY = farmSizes[idx, 1];
+        ResourceManager.Fruit fruit = (ResourceManager.Fruit) idx;
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
-            currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
-            currentFarm.setFruit((ResourceManager.Fruit) idx);
-            currentFarm.setIslandManager(islandManager);
-            currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
-            return true;
+            if (ResourceManager.hasEnoughFruitsToBuildFarm(fruit)) {
+                currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
+                currentFarm.setFruit(fruit);
+                currentFarm.setIslandManager(islandManager);
+                currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
+                ResourceManager.buildFarm(fruit);
+                return true;
+            } else {
+                Debug.Log("Not enough fruits");
+                return false;
+            }
         } else {
+            Debug.Log("Not enough space");
             return false;
         }
 

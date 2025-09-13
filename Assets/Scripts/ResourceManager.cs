@@ -17,7 +17,20 @@ public class ResourceManager : MonoBehaviour
 
     private static int[][] tileCosts = new int[9800][];
 
-    private static int[][] levelUpCosts = new int[9][];
+    private static int[][] farmCosts = new int[fruitTypeCount][];
+
+    farmCosts[0] = {10,0,0,0,0};
+    farmCosts[1] = {50,0,0,0,0};
+    farmCosts[2] = {500,100,0,0,0};
+    farmCosts[3] = {8500,600,90,0,0};
+    farmCosts[4] = {44000,2600,340,120,0};
+
+    private static int[][] levelUpCosts = new int[fruitTypeCount - 1][];
+
+    levelUpCosts[0] = {102,0,0,0,0};
+    levelUpCosts[1] = {1000,200,0,0,0};
+    levelUpCosts[2] = {21000,1350,180,0,0};
+    levelUpCosts[3] = {87000,5600,700,250,0};
 
     public static int level = 1;
 
@@ -52,6 +65,14 @@ public class ResourceManager : MonoBehaviour
     public static void buildTile() {
         subtractArrays(fruitCounts, tileCosts[IslandManager.existingTileCount]);
         IslandManager.existingTileCount++;
+    }
+
+    public static bool hasEnoughFruitsToBuildFarm(Fruit fruit) {
+        return compareArrays(fruitCounts, farmCosts[(int) fruit]);
+    }
+
+    public static void buildFarm(Fruit fruit) {
+        subtractArrays(fruitCounts, farmCosts[(int) fruit]);
     }
 
     public static bool hasEnoughFruitsToLevelUp() {
