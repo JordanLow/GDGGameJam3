@@ -11,21 +11,6 @@ public class Tile : MonoBehaviour
         Used
     }
 
-    private enum Fruit {
-        Strawberry = 0,
-        Pineapple,
-        Watermelon,
-        Lemon,
-        Apple,
-        Pear,
-        Grape,
-        Banana,
-        Kiwi,
-        Mango
-    }
-
-    private const int fruitTypeCount = 10;
-
     [SerializeField] public GameObject addStateTexture;
     [SerializeField] public GameObject existStateTexture;
 
@@ -33,7 +18,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] public GameObject menuPrefab;
 
-    private int[,] farmSizes = new int[Tile.fruitTypeCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
+    private int[,] farmSizes = new int[ResourceManager.fruitTypeCount, 2] {{1, 1}, {1, 2}, {2, 3}, {3, 2}, {3, 4}};
 
     private IslandManager islandManager;
 
@@ -41,6 +26,8 @@ public class Tile : MonoBehaviour
     // TEST
     // private TileState state = TileState.Used;
     private TileState state = TileState.Free;
+
+    private bool isTownHall = false;
     // private TileState state = TileState.Add;
     // ENDTEST
     private int xIndexPos;
@@ -76,6 +63,15 @@ public class Tile : MonoBehaviour
         this.currentFarm = farm;
     }
 
+    public void declareTownHall() {
+        this.isTownHall = true;
+        this.setUsed();
+    }
+
+    public bool getIsTownHall() {
+        return this.isTownHall;
+    }
+
     public void setIndexPosition(int x, int y) {
         this.xIndexPos = x;
         this.yIndexPos = y;
@@ -103,7 +99,7 @@ public class Tile : MonoBehaviour
     public void setUsed() {
         this.state = TileState.Used;
         addStateTexture.SetActive(false);
-        existStateTexture.SetActive(true);
+        existStateTexture.SetActive(false);
     }
 
     public bool isFree() {
@@ -111,11 +107,27 @@ public class Tile : MonoBehaviour
     }
 
     public bool buildTile() {
-        if (ResourceManager.hasEnoughFruitsToBuildTile(IslandManager.existingTileCount)) {
+        if (ResourceManager.hasEnoughFruitsToBuildTile()) {
+            ResourceManager.buildTile();
             this.setFree();
         }
         Debug.Log("Not enough resources");
         return false;
+    }
+
+    public void levelUp() {
+        if (ResourceManager.hasEnoughFruitsToLevelUp()) {
+            ResourceManager.levelUp();
+        }
+        Debug.Log("Not enough resources");
+    }
+
+    public void harvestFarmOnTile() {
+        currentFarm.harvest();
+    }
+
+    public void demolishFarmOnTile() {
+        currentFarm.demolish();
     }
 
     public void openClickMenu() {
@@ -134,10 +146,11 @@ public class Tile : MonoBehaviour
     }
 
     public bool buildFarm(int idx) {
-        int sizeX = farmSizes[(int) Fruit.Strawberry, 0];
-        int sizeY = farmSizes[(int) Fruit.Strawberry, 1];
+        int sizeX = farmSizes[idx, 0];
+        int sizeY = farmSizes[idx, 1];
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
             currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
+            currentFarm.setFruit((ResourceManager.Fruit) idx);
             currentFarm.setIslandManager(islandManager);
             currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
             return true;
