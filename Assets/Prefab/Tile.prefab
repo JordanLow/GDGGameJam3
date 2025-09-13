@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4467758671072609328}
+  m_Father: {fileID: 5999959383625424718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1851847382200653406
 SpriteRenderer:
@@ -120,7 +120,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4467758671072609328}
+  m_Father: {fileID: 5999959383625424718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2334892674868015813
 SpriteRenderer:
@@ -196,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7041000268646318966
 Transform:
   m_ObjectHideFlags: 0
@@ -270,6 +270,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7602538476622657993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5999959383625424718}
+  m_Layer: 0
+  m_Name: Tile_Exists
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5999959383625424718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602538476622657993}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7136852764510891091}
+  - {fileID: 7406914162215891918}
+  m_Father: {fileID: 4467758671072609328}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8824016742207815007
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,8 +334,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7041000268646318966}
-  - {fileID: 7136852764510891091}
-  - {fileID: 7406914162215891918}
+  - {fileID: 5999959383625424718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1692536184984501723
@@ -317,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb27ef637605514089d8d0eced2ae1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  addStateTexture: {fileID: 4643612380132441615}
-  existStateTexture: {fileID: 5255996329352735913}
+  addStateTexture: {fileID: 5858516778924639651}
+  existStateTexture: {fileID: 7602538476622657993}
   farmPrefabs: []
   menuPrefab: {fileID: 0}

@@ -13,6 +13,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] public GameObject addStateTexture;
     [SerializeField] public GameObject existStateTexture;
+    [SerializeField] public GameObject townHallTexture;
 
     [SerializeField] public List<GameObject> farmPrefabs;
 
@@ -66,6 +67,7 @@ public class Tile : MonoBehaviour
 
     public void declareTownHall() {
         this.isTownHall = true;
+        townHallTexture.SetActive(false);
         this.setUsed();
     }
 
