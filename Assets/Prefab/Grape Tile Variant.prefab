@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1692536184984501723, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: 'farmPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7792334602715615022}
     - target: {fileID: 4467758671072609328, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,8 +60,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1692536184984501723, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2477339746283335145}
   m_SourcePrefab: {fileID: 100100000, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+--- !u!1 &7792334602715615022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+  m_PrefabInstance: {fileID: 1609715193845920369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2477339746283335145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792334602715615022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50be48109b075614cb747435544f87b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Farm
+  harvestedStateTexture: {fileID: 0}
+  harvestableStateTexture: {fileID: 0}
