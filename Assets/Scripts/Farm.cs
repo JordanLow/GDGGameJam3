@@ -25,7 +25,7 @@ public class Farm : MonoBehaviour
     }
 
     public void startHarvestCycle() {
-        Invoke(nameof(setHarvestable), devharvestDelays[(int) fruit, ResourceManager.level - 1]);
+        Invoke(nameof(setHarvestable), devharvestDelays[ResourceManager.level - 1, (int) fruit]);
     }
 
     public void setFruit(ResourceManager.Fruit fruit) {
@@ -51,7 +51,7 @@ public class Farm : MonoBehaviour
 
     public void harvest() {
         if (isHarvestable) {
-            ResourceManager.addResource(fruit, harvestAmounts[(int) fruit, ResourceManager.level - 1]);
+            ResourceManager.addResource(fruit, harvestAmounts[ResourceManager.level - 1, (int) fruit]);
             this.setHarvested();
             startHarvestCycle();
             Debug.Log("Harvested");
