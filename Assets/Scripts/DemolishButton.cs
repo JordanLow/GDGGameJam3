@@ -4,7 +4,7 @@ public class DemolishButton : MonoBehaviour
 {
    
     public void OnDemolish() {
-        // PopupManager.Instance.Demolish()
+        PopupManager.Instance.Demolish();
     }
 
 }
