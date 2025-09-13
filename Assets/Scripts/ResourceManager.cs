@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class ResourceManager : MonoBehaviour
     }
 
     private static int[] fruitCounts = new int[fruitTypeCount];
-
-    private static int[][] tileCosts = new int[9800][];
 
     private static int[][] farmCosts = new int[fruitTypeCount][] {
         new int[5] {10,0,0,0,0},
@@ -69,12 +68,24 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    private static int[] getTileCosts() {
+        count = IslandManager.existingTileCount;
+        int num1 = 
+        return new int[fruitTypeCount] {
+            50 + Math.Pow(0.5 * count, 1.8),
+            30 + Math.Pow(0.5 * count, 1.8),
+            20 + Math.Pow(0.5 * count, 1.8),
+            50 + Math.Pow(0.5 * count, 1.8),
+            1 + Math.Pow(0.5 * count, 1.8)
+        };
+    } 
+
     public static bool hasEnoughFruitsToBuildTile() {
-        return compareArrays(fruitCounts, tileCosts[IslandManager.existingTileCount]);
+        return compareArrays(fruitCounts, tileCosts);
     }
 
     public static void buildTile() {
-        subtractArrays(fruitCounts, tileCosts[IslandManager.existingTileCount]);
+        subtractArrays(fruitCounts, tileCosts);
         IslandManager.existingTileCount++;
     }
 
