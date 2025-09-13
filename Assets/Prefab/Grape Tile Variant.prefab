@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: 'farmPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 7792334602715615022}
+    - target: {fileID: 4100017753431048142, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5115476103823675877, guid: b58be41dc772147468ec4259d35e56fb, type: 3}
     - target: {fileID: 4467758671072609328, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -149,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 5858516778924639651, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041000268646318966, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8824016742207815007, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_Name

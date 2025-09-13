@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harvestable
       objectReference: {fileID: 0}
+    - target: {fileID: 5858516778924639651, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7041000268646318966, guid: 376c3e8954fe3df448ecbd3bd50739c4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
