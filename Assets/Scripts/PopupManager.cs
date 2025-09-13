@@ -85,4 +85,17 @@ public class PopupManager : MonoBehaviour
     public void EnableLevelUp() {
         Instantiate(levelUpButton, this.activeMenu.transform);
     }
+
+    public void BuildFarm(int i) {
+        this.activeTile.buildFarm(i);
+    }
+
+    public void Demolish() {
+        this.activeTile.demolishFarmOnTile();
+    }
+
+    public void Add() {
+        this.activeTile.buildTile();
+    }
+
 }
