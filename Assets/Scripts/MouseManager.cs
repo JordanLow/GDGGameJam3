@@ -40,7 +40,7 @@ public class MouseManager : MonoBehaviour
         {
             Debug.Log("Clicked 2D object: " + hit.collider.name);
             
-            Tile tile = hit.collider.GetComponent<Tile>();
+            Tile tile = hit.collider.transform.parent.GetComponent<Tile>();
             
             tile.openClickMenu();
         }

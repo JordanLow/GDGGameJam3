@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour
     [SerializeField] public GameObject addStateTexture;
     [SerializeField] public GameObject existStateTexture;
     [SerializeField] public GameObject townHallStateTexture;
+    [SerializeField] public GameObject tcollider;
 
     [SerializeField] public List<GameObject> farmPrefabs;
 
@@ -84,6 +85,7 @@ public class Tile : MonoBehaviour
 
     public void setEmpty() {
         this.state = TileState.Empty;
+        tcollider.SetActive(false);
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(false);
         townHallStateTexture.SetActive(false);
@@ -91,6 +93,7 @@ public class Tile : MonoBehaviour
 
     public void setAdd() {
         this.state = TileState.Add;
+        tcollider.SetActive(true);
         addStateTexture.SetActive(true);
         existStateTexture.SetActive(false);
         townHallStateTexture.SetActive(false);
@@ -99,6 +102,7 @@ public class Tile : MonoBehaviour
 
     public void setFree() {
         this.state = TileState.Free;
+        tcollider.SetActive(true);
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(true);
         townHallStateTexture.SetActive(false);
@@ -106,6 +110,7 @@ public class Tile : MonoBehaviour
 
     public void setUsed() {
         this.state = TileState.Used;
+        tcollider.SetActive(true);
         addStateTexture.SetActive(false);
         existStateTexture.SetActive(false);
         townHallStateTexture.SetActive(false);
