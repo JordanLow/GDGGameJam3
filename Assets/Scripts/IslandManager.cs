@@ -31,12 +31,39 @@ public class IslandManager : MonoBehaviour
                 tiles[i, j].setIndexPosition(i, j);
             }
         }
-        tiles[xOrigin, yOrigin].setFree();
 
-        tiles[xOrigin + 1, yOrigin].setAdd();
-        tiles[xOrigin, yOrigin + 1].setAdd();
-        tiles[xOrigin - 1, yOrigin].setAdd();
-        tiles[xOrigin, yOrigin - 1].setAdd();
+        for (int i = xOrigin - 2; i < xOrigin + 3; i++) {
+            for (int j = yOrigin - 2; j < yOrigin + 3; j++) {
+                tiles[i, j].setFree();
+            }
+        }
+
+        tiles[xOrigin, yOrigin].declareTownHall();
+
+
+        tiles[xOrigin + 3, yOrigin - 2].setAdd();
+        tiles[xOrigin + 3, yOrigin - 1].setAdd();
+        tiles[xOrigin + 3, yOrigin    ].setAdd();
+        tiles[xOrigin + 3, yOrigin + 1].setAdd();
+        tiles[xOrigin + 3, yOrigin + 2].setAdd();
+        
+        tiles[xOrigin - 3, yOrigin - 2].setAdd();
+        tiles[xOrigin - 3, yOrigin - 1].setAdd();
+        tiles[xOrigin - 3, yOrigin    ].setAdd();
+        tiles[xOrigin - 3, yOrigin + 1].setAdd();
+        tiles[xOrigin - 3, yOrigin + 2].setAdd();
+        
+        tiles[xOrigin - 2, yOrigin + 3].setAdd();
+        tiles[xOrigin - 1, yOrigin + 3].setAdd();
+        tiles[xOrigin    , yOrigin + 3].setAdd();
+        tiles[xOrigin + 1, yOrigin + 3].setAdd();
+        tiles[xOrigin + 2, yOrigin + 3].setAdd();
+        
+        tiles[xOrigin - 2, yOrigin - 3].setAdd();
+        tiles[xOrigin - 1, yOrigin - 3].setAdd();
+        tiles[xOrigin    , yOrigin - 3].setAdd();
+        tiles[xOrigin + 1, yOrigin - 3].setAdd();
+        tiles[xOrigin + 2, yOrigin - 3].setAdd();
     } 
 
     public bool checkTilesFree(int x, int y, int dx, int dy) {
