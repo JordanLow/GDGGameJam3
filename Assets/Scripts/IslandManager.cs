@@ -23,7 +23,7 @@ public class IslandManager : MonoBehaviour
         
         for (int i = 0; i < maxSizeX; i++) {
             for (int j = 0; j < maxSizeY; j++) {
-                tiles[i, j] = spawnTilePrefab(new Vector3(0, 0, 0));
+                tiles[i, j] = spawnTilePrefab(i*(new Vector3(0.21f, 0.14f, 0) + j*(new Vector3(-0.21f, 0.14f, 0))));
                 tiles[i, j].setEmpty();
                 tiles[i, j].setIslandManager(this);
                 tiles[i, j].setIndexPosition(i, j);
