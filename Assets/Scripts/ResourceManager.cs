@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class ResourceManager : MonoBehaviour
     }
 
     private static int[] fruitCounts = new int[fruitTypeCount] {10,0,0,0,0};
-
-    private static int[][] tileCosts = new int[9800][];
 
     private static int[][] farmCosts = new int[fruitTypeCount][] {
         new int[5] {10,0,0,0,0},
@@ -69,12 +68,37 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    private static int[] getTileCosts() {
+        int count = IslandManager.existingTileCount;
+        int num1 = (int) Math.Pow(0.5 * count, 1.8) + 50;
+        if (num1 < 0) {
+            num1 = 0;
+        }
+        int num2 = (int) Math.Pow(0.5 * count, 1.6) - 20;
+        if (num2 < 0) {
+            num2 = 0;
+        }
+        int num3 = (int) Math.Pow(0.5 * count, 1.4) - 70;
+        if (num3 < 0) {
+            num3 = 0;
+        }
+        int num4 = (int) Math.Pow(0.5 * count, 1.2) - 100;
+        if (num4 < 0) {
+            num4 = 0;
+        }
+        int num5 = (int) Math.Pow(0.5 * count, 1) - 100;
+        if (num5 < 0) {
+            num5 = 0;
+        }
+        return new int[fruitTypeCount] {num1, num2, num3, num4, num5};
+    } 
+
     public static bool hasEnoughFruitsToBuildTile() {
-        return compareArrays(fruitCounts, tileCosts[IslandManager.existingTileCount]);
+        return compareArrays(fruitCounts, getTileCosts());
     }
 
     public static void buildTile() {
-        subtractArrays(fruitCounts, tileCosts[IslandManager.existingTileCount]);
+        subtractArrays(fruitCounts, getTileCosts());
         IslandManager.existingTileCount++;
     }
 
