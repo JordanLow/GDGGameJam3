@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Tile : MonoBehaviour
 {
@@ -25,27 +26,35 @@ public class Tile : MonoBehaviour
 
     private const int fruitCount = 10;
 
-    [SerializeField] public static GameObject addStateTexture;
-    [SerializeField] public static GameObject existStateTexture;
+    [SerializeField] public GameObject addStateTexture;
+    [SerializeField] public GameObject existStateTexture;
+/*
+    0: [SerializeField] public GameObject strawberryFarmPrefab;
+    1: [SerializeField] public GameObject pineappleFarmPrefab;
+    2: [SerializeField] public GameObject lemonFarmPrefab;
+    3: [SerializeField] public GameObject watermelonFarmPrefab;
+    4: [SerializeField] public GameObject appleFarmPrefab;
+    5: [SerializeField] public GameObject pearFarmPrefab;
+    6: [SerializeField] public GameObject grapeFarmPrefab;
+    7: [SerializeField] public GameObject kiwiFarmPrefab;
+    8: [SerializeField] public GameObject bananaFarmPrefab;
+    9: [SerializeField] public GameObject mangoFarmPrefab;
+*/
+
+    [SerializeField] public List<GameObject> farmPrefabs;
 
     [SerializeField] public GameObject menuPrefab;
-
-    [SerializeField] public static GameObject strawberryFarmPrefab;
-    [SerializeField] public static GameObject pineappleFarmPrefab;
-    [SerializeField] public static GameObject lemonFarmPrefab;
-    [SerializeField] public static GameObject watermelonFarmPrefab;
-    [SerializeField] public static GameObject appleFarmPrefab;
-    [SerializeField] public static GameObject pearFarmPrefab;
-    [SerializeField] public static GameObject grapeFarmPrefab;
-    [SerializeField] public static GameObject kiwiFarmPrefab;
-    [SerializeField] public static GameObject bananaFarmPrefab;
-    [SerializeField] public static GameObject mangoFarmPrefab;
 
     private int[,] farmSizes = new int[Tile.fruitCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
 
     private IslandManager islandManager;
 
-    private TileState state = TileState.Empty;
+    // private TileState state = TileState.Empty;
+    // TEST
+    // private TileState state = TileState.Used;
+    private TileState state = TileState.Free;
+    // private TileState state = TileState.Add;
+    // ENDTEST
     private int xIndexPos;
     private int yIndexPos;
     private float xPos;
@@ -122,20 +131,25 @@ public class Tile : MonoBehaviour
     }
 
     public void openClickMenu() {
-        if (this.state == TileState.USED) {
-            // Demolish
-            // If Harvestable, Harvest
-        }
-        // Else if FREE: Build options
-        // ELse if ADD: Add tile option
         PopupManager.Instance.ShowMenuForObject(gameObject, menuPrefab);
+        if (this.state == TileState.Used) {
+            PopupManager.Instance.EnableDemolishButton();
+            PopupManager.Instance.EnableHarvestButton();
+        }
+        if (this.state == TileState.Free) {
+            int idx = 1; // ResourceManager.level?
+            PopupManager.Instance.EnableBuildButton(idx);
+        } 
+        if (this.state == TileState.Add) {
+            PopupManager.Instance.EnableAddButton();
+        }
     }
 
-    public bool buildStrawberryFarm() {
+    public bool buildFarm(int idx) {
         int sizeX = farmSizes[(int) Fruit.Strawberry, 0];
         int sizeY = farmSizes[(int) Fruit.Strawberry, 1];
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
-            currentFarm = spawnFarmPrefab(strawberryFarmPrefab, new Vector3(xPos, yPos, 0));
+            currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
             currentFarm.setIslandManager(islandManager);
             currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
             return true;

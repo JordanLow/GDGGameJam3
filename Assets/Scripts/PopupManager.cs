@@ -1,10 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PopupManager : MonoBehaviour
 {
     public static PopupManager Instance { get; private set; }
 
     [SerializeField] private Canvas popupCanvas;
+    [SerializeField] private GameObject harvestButton;
+    [SerializeField] private GameObject addButton;
+    [SerializeField] private GameObject demolishButton;
+
+    [SerializeField] private List<GameObject> buildButtons;
 
     private GameObject activeMenu;
 
@@ -48,6 +54,27 @@ public class PopupManager : MonoBehaviour
             activeMenu = null;
 
             Debug.Log("te");
+        }
+    }
+
+    public void EnableAddButton()
+    {
+        Instantiate(addButton, this.activeMenu.transform);
+    }
+
+    public void EnableDemolishButton()
+    {
+        Instantiate(demolishButton, this.activeMenu.transform);
+    }
+
+    public void EnableHarvestButton()
+    {
+        Instantiate(harvestButton, this.activeMenu.transform);
+    }
+
+    public void EnableBuildButton(int idx) {
+        for (int i = 0; i < idx; i++) {
+            Instantiate(buildButtons[i], this.activeMenu.transform);
         }
     }
 }
