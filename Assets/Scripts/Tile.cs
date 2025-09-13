@@ -51,8 +51,8 @@ public class Tile : MonoBehaviour
 
     // private TileState state = TileState.Empty;
     // TEST
-    // private TileState state = TileState.Used;
-    private TileState state = TileState.Free;
+    private TileState state = TileState.Used;
+    // private TileState state = TileState.Free;
     // private TileState state = TileState.Add;
     // ENDTEST
     private int xIndexPos;
@@ -133,11 +133,15 @@ public class Tile : MonoBehaviour
     public void openClickMenu() {
         PopupManager.Instance.ShowMenuForObject(gameObject, menuPrefab);
         if (this.state == TileState.Used) {
-            PopupManager.Instance.EnableDemolishButton();
-            PopupManager.Instance.EnableHarvestButton();
+            if (true) { // If isTownHall
+                PopupManager.Instance.EnableLevelUp();
+            } else {
+                PopupManager.Instance.EnableHarvestButton();
+                PopupManager.Instance.EnableDemolishButton();
+            }
         }
         if (this.state == TileState.Free) {
-            int idx = 1; // ResourceManager.level?
+            int idx = 5; // ResourceManager.level?
             PopupManager.Instance.EnableBuildButton(idx);
         } 
         if (this.state == TileState.Add) {

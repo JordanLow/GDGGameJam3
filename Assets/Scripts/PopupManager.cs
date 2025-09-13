@@ -9,10 +9,12 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private GameObject harvestButton;
     [SerializeField] private GameObject addButton;
     [SerializeField] private GameObject demolishButton;
+    [SerializeField] private GameObject levelUpButton;
 
     [SerializeField] private List<GameObject> buildButtons;
 
     private GameObject activeMenu;
+    private GameObject activeTile;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class PopupManager : MonoBehaviour
         if (activeMenu != null) CloseMenu();
 
         activeMenu = Instantiate(menuPrefab, popupCanvas.transform);
+        activeTile = obj;
         RectTransform popup = activeMenu.GetComponent<RectTransform>();
 
         // Convert world position to local canvas position
@@ -52,6 +55,7 @@ public class PopupManager : MonoBehaviour
         {
             Destroy(activeMenu);
             activeMenu = null;
+            activeTile = null;
 
             Debug.Log("te");
         }
@@ -76,5 +80,9 @@ public class PopupManager : MonoBehaviour
         for (int i = 0; i < idx; i++) {
             Instantiate(buildButtons[i], this.activeMenu.transform);
         }
+    }
+
+    public void EnableLevelUp() {
+        Instantiate(levelUpButton, this.activeMenu.transform);
     }
 }

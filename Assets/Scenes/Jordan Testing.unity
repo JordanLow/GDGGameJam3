@@ -275,16 +275,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   addStateTexture: {fileID: 0}
   existStateTexture: {fileID: 0}
-  strawberryFarmPrefab: {fileID: 0}
-  pineappleFarmPrefab: {fileID: 0}
-  lemonFarmPrefab: {fileID: 0}
-  watermelonFarmPrefab: {fileID: 0}
-  appleFarmPrefab: {fileID: 0}
-  pearFarmPrefab: {fileID: 0}
-  grapeFarmPrefab: {fileID: 0}
-  kiwiFarmPrefab: {fileID: 0}
-  bananaFarmPrefab: {fileID: 0}
-  mangoFarmPrefab: {fileID: 0}
+  farmPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   menuPrefab: {fileID: 183737771945852731, guid: 511af674cd028432499b54fde100cddc, type: 3}
 --- !u!212 &1205753800
 SpriteRenderer:
@@ -676,6 +677,13 @@ MonoBehaviour:
   harvestButton: {fileID: 4385452490626976533, guid: 600f6afe8afa24ccf8a82fc30cd6ffe4, type: 3}
   addButton: {fileID: 4385452490626976533, guid: 29253952b36294f98abecf82180e2289, type: 3}
   demolishButton: {fileID: 4385452490626976533, guid: b0ceed5cc37504d4ab6faca6826efe15, type: 3}
+  levelUpButton: {fileID: 4385452490626976533, guid: 6142a617e61af470d8d82c008e450a8c, type: 3}
+  buildButtons:
+  - {fileID: 4385452490626976533, guid: 9f64617b7eb5e43fa84b9fd9b65bdb6e, type: 3}
+  - {fileID: 4385452490626976533, guid: 63462f0d3f08744bdb59e8bc8d876cb1, type: 3}
+  - {fileID: 4385452490626976533, guid: cc2dca85846e2467fb41c7bb32e4990c, type: 3}
+  - {fileID: 4385452490626976533, guid: cf74f1a0d68d6476e8d4521b610e92ad, type: 3}
+  - {fileID: 4385452490626976533, guid: f0ac7457d26d347f5a82087485929660, type: 3}
 --- !u!4 &1492480973
 Transform:
   m_ObjectHideFlags: 0

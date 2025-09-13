@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6082698909181250325}
   - component: {fileID: 2349871127488213781}
   - component: {fileID: 1818345533850390704}
-  - component: {fileID: -1878013066723163758}
+  - component: {fileID: 2340949651441218206}
   m_Layer: 5
-  m_Name: Harvest Button
+  m_Name: Grape Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,14 +117,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2349871127488213781}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -1878013066723163758}
-        m_TargetAssemblyTypeName: HarvestButton, Assembly-CSharp
-        m_MethodName: OnHarvest
+      - m_Target: {fileID: 2340949651441218206}
+        m_TargetAssemblyTypeName: BuildFarmButton, Assembly-CSharp
+        m_MethodName: OnBuild
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-1878013066723163758
+--- !u!114 &2340949651441218206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4385452490626976533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a7cd23584f34659b093d1ff784eed6, type: 3}
+  m_Script: {fileID: 11500000, guid: de52a3899bbcc48dda71223fe71a0633, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::BuildFarmButton
+  farmLevel: 2
 --- !u!1 &5410798110966185818
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Harvest
+  m_text: Build Grape Farm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -238,8 +239,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
