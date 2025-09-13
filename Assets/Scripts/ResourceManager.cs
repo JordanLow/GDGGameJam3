@@ -9,12 +9,6 @@ public class ResourceManager : MonoBehaviour
 
     private static int numFruits = 2;
 
-    // enum Fruit
-    // {
-    //     Apple = 0,
-    //     Grape
-    // }
-
     private static int[] fruitCount = new int[numFruits];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,8 +46,7 @@ public class ResourceManager : MonoBehaviour
             
             Tile tile = hit.collider.GetComponent<Tile>();
 
-            tile.openClickMenu();
-            
+            tile.openClickMenu();   
         }
     }
 
