@@ -14,7 +14,7 @@ public class ResourceManager : MonoBehaviour
         Mango
     }
 
-    private static int[] fruitCounts = new int[fruitTypeCount] {10,0,0,0,0};
+    public static int[] fruitCounts = new int[fruitTypeCount] {10,0,0,0,0};
 
     private static int[][] farmCosts = new int[fruitTypeCount][] {
         new int[5] {10,0,0,0,0},
