@@ -31,11 +31,18 @@ public class Tile : MonoBehaviour
 
     [SerializeField] public List<GameObject> farmPrefabs;
 
+    [SerializeField] public GameObject menuPrefab;
+
     private int[,] farmSizes = new int[Tile.fruitTypeCount, 2] {{1, 1}, {1, 2}, {2, 2}, {2, 2}, {2, 3}, {3, 3}, {2, 4}, {2, 3}, {3, 4}, {3, 5}};
 
     private IslandManager islandManager;
 
-    private TileState state = TileState.Empty;
+    // private TileState state = TileState.Empty;
+    // TEST
+    // private TileState state = TileState.Used;
+    private TileState state = TileState.Free;
+    // private TileState state = TileState.Add;
+    // ENDTEST
     private int xIndexPos;
     private int yIndexPos;
     private float xPos;
@@ -112,14 +119,25 @@ public class Tile : MonoBehaviour
     }
 
     public void openClickMenu() {
-
+        PopupManager.Instance.ShowMenuForObject(gameObject, menuPrefab);
+        if (this.state == TileState.Used) {
+            PopupManager.Instance.EnableDemolishButton();
+            PopupManager.Instance.EnableHarvestButton();
+        }
+        if (this.state == TileState.Free) {
+            int idx = 1; // ResourceManager.level?
+            PopupManager.Instance.EnableBuildButton(idx);
+        } 
+        if (this.state == TileState.Add) {
+            PopupManager.Instance.EnableAddButton();
+        }
     }
 
-    public bool buildFarm(int index) {
-        int sizeX = farmSizes[index, 0];
-        int sizeY = farmSizes[index, 1];
+    public bool buildFarm(int idx) {
+        int sizeX = farmSizes[(int) Fruit.Strawberry, 0];
+        int sizeY = farmSizes[(int) Fruit.Strawberry, 1];
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
-            currentFarm = spawnFarmPrefab(farmPrefabs[index], new Vector3(xPos, yPos, 0));
+            currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
             currentFarm.setIslandManager(islandManager);
             currentFarm.setUsedTiles(xIndexPos, yIndexPos, sizeX, sizeY);
             return true;
