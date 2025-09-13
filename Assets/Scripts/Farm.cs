@@ -14,6 +14,7 @@ public class Farm : MonoBehaviour
     [SerializeField] public GameObject harvestableStateTexture;
 
     private float[,] harvestDelays = {{4,0,0,0,0},{8,13,0,0,0},{21,32,60,0,0},{39,63,107,148,0},{57,99,159,198,269}};
+    private float[,] devharvestDelays = {{0.1f,0,0,0,0},{0.1f,0.1f,0,0,0},{0.1f,0.1f,0.1f,0,0},{0.1f,0.1f,0.1f,0.1f,0},{0.1f,0.1f,0.1f,0.1f,0.1f}};
     private int[,] harvestAmounts = {{7,0,0,0,0},{21,9,0,0,0},{63,27,10,0,0},{189,81,30,11,0},{567,243,90,33,15}};
     private bool isHarvestable = false;
 
@@ -24,7 +25,7 @@ public class Farm : MonoBehaviour
     }
 
     public void startHarvestCycle() {
-        Invoke(nameof(setHarvestable), harvestDelays[(int) fruit, ResourceManager.level - 1]);
+        Invoke(nameof(setHarvestable), devharvestDelays[(int) fruit, ResourceManager.level - 1]);
     }
 
     public void setFruit(ResourceManager.Fruit fruit) {

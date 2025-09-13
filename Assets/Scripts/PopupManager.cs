@@ -89,21 +89,26 @@ public class PopupManager : MonoBehaviour
 
     public void BuildFarm(int i) {
         this.activeTile.buildFarm(i);
+        CloseMenu();
     }
 
     public void Demolish() {
         this.activeTile.demolishFarmOnTile();
+        CloseMenu();
     }
 
     public void Add() {
         this.activeTile.buildTile();
+        CloseMenu();
     }
 
     public void Harvest() {
         this.activeTile.harvestFarmOnTile();
+        CloseMenu();
     }
 
     public void LevelUp() {
         this.activeTile.levelUp();
+        CloseMenu();
     }
 }

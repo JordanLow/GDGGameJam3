@@ -178,11 +178,11 @@ public class Tile : MonoBehaviour
         ResourceManager.Fruit fruit = (ResourceManager.Fruit) idx;
         if (islandManager.checkTilesFree(xIndexPos, yIndexPos, sizeX, sizeY)) {
             if (ResourceManager.hasEnoughFruitsToBuildFarm(fruit)) {
-                if (farmPrefabs[idx] == null) {
-                    Debug.Log("0");
-                }
                 currentFarm = spawnFarmPrefab(farmPrefabs[idx], new Vector3(xPos, yPos, 0));
                 Debug.Log("1");
+                if (currentFarm == null) {
+                    Debug.Log("0");
+                }
                 currentFarm.setFruit(fruit);
                 Debug.Log("2");
                 currentFarm.setIslandManager(islandManager);
